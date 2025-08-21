@@ -2,7 +2,7 @@
 <person>
 	<name>Nguyen Van A</name>
 	<age>20</age>
-	<major>Chii</major>
+	<major>Computer Science</major>
     <gpa> 3.7 </gpa>
 	<courses>
 		<course>Programming Fundamentals</course>
