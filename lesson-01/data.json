@@ -1,8 +1,8 @@
 {
 	"name": "Nguyen Van A",
-	"age": "20",
+	"age": 20,
     "major": "Computer Science",
-    "gpa": "3.7",
+    "gpa": 3.7,
 	"courses": 
 	[
 	"Programming Fundamentals",
