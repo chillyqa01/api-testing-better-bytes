@@ -14,7 +14,7 @@ switch (streaming) {
 
 };
 
-let streaming = "netflix";
+
 if (streaming === "netflix") {
   console.log("Bạn có thể xem 'Stranger Things'!");
 } else if (result === "disney+") {
