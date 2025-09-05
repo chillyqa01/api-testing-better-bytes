@@ -2,10 +2,13 @@ let package = "free";
 switch (package) {
     case "free":
         console.log("Bạn có thể nghe nhạc nhưng có quảng cáo.");
+        break;
     case "premium":
         console.log("Không quảng cáo, nghe nhạc offline!");
+        break;
     case "family":
         console.log("Gói dùng cho nhiều thành viên!");
+        break;
     case "student":
         console.log("Ưu đãi dành riêng cho sinh viên!");
     break;
@@ -14,18 +17,18 @@ switch (package) {
 
 };
 
-let package = "free";
 
-if (result === "free") 
+
+if (package === "free") 
     {
   console.log("Bạn có thể nghe nhạc nhưng có quảng cáo.");
-} else if (result === "premium") 
+} else if (package === "premium") 
     {
   console.log("Không quảng cáo, nghe nhạc offline!");
-} else if (result === "family") 
+} else if (package === "family") 
     {
   console.log("Gói dùng cho nhiều thành viên!");
-} else if (result === "student") 
+} else if (package === "student") 
     {
   console.log("Ưu đãi dành riêng cho sinh viên!");
 } else 

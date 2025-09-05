@@ -2,10 +2,13 @@ let streaming = "netflix";
 switch (streaming) {
     case "netflix":
         console.log("Bạn có thể xem 'Stranger Things'!");
+        break;
     case "disney+":
         console.log("Thử ngay 'Loki' trên Disney+!");
+        break;
     case "hbo":
         console.log("Xem 'Game of Thrones' ngay nào!");
+        break;
     case "prime":
         console.log("Bạn có thể xem 'The Boys'!");
     break;
@@ -17,11 +20,11 @@ switch (streaming) {
 
 if (streaming === "netflix") {
   console.log("Bạn có thể xem 'Stranger Things'!");
-} else if (result === "disney+") {
+} else if (streaming === "disney+") {
   console.log("Thử ngay 'Loki' trên Disney+!");
-} else if (result === "hbo") {
+} else if (streaming === "hbo") {
   console.log("Xem 'Game of Thrones' ngay nào!");
-} else if (result === "prime") {
+} else if (streaming === "prime") {
   console.log("Bạn có thể xem 'The Boys'!");
 } else {
   console.log("Kết quả không hợp lệ!");
