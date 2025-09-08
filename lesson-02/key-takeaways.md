@@ -187,5 +187,42 @@ dùng không phải đăng nhập lại.
     - Không chứa thông tin người dùng mà chỉ xác định ứng dụng nào đang gọi API.
     - Sử dụng tương tự token
     
-    Cách dùng: đính kèm trong header hoặc query
-parameter
+    Cách dùng: đính kèm trong header hoặc query parameter
+
+**Đính kèm trong Header**
+
+- Authorization: Bearer <token/API key>
+
+
+**Đính kèm trong query**
+
+- https://bba.com?access_token=xyz
+- https://bba.com?api_key=zzz
+- https://bba.com?token=aaa&refresh_token=bbb
+
+## Authentication methods
+### Session -  Cookie Auth
+1.  Người dùng đăng nhập
+2.  Server xử lý và tạo Session, gửi cookie về cho client
+3.  Trình duyệt gửi request kèm cookie trong các API cần xác thực
+4. Server kiểm tra Session và xác thực người dùng
+5. Đăng xuất (Logout): server xoá session và gửi response về client: báo client xoá cookie liên quan đi.
+
+### Basic Auth
+Basic Authentication (Basic Auth): phương thức xác thực đơn giản của HTTP, trong đó thông tin đăng nhập
+(username và password) được mã hóa bằng Base64 và gửi trong mỗi request.
+
+    **base64(username:password)**
+
+1. Client gửi request không có thông tin xác thực
+2. Server phản hồi yêu cầu xác thực (401 Unauthorized)
+3. Client gửi lại request với thông tin xác thực trong header
+4. Server kiểm tra thông tin đăng nhập
+
+**Cách dùng Basic Auth:**
+
+Sử dụng header:
+    
+    Authorization: Basic <base64-encoded-token>
+
+### API Key
