@@ -92,4 +92,137 @@ Các nhóm headers:
 ![alt text](image-7.png)
 
 4. **Request: Body**
-   
+
+Tại sao cần request body?
+- **Tối ưu hoá giao tiếp**: Hiểu đúng cách truyền dữ liệu giúp giảm sai sót trong giao tiếp giữa client và server.
+- **Tăng bảo mật**: Request body có thể chứa thông tin nhạy cảm (như mật khẩu), vì vậy cần mã hóa hoặc sử dụng HTTPS. Nếu để thông tin nhạy cảm ở URL, hacker có thể đọc được.
+- **Tăng hiệu quả xử lý**: Xây dựng request body hợp lý giúp server xử lý nhanh hơn, tránh lỗi phát sinh.
+
+Lưu ý khi làm việc với request body:
+- Sử dụng đúng định dạng
+- Xác thực dữ liệu 
+- Mã hóa dữ liệu nhạy cảm 
+- Kiểm tra lỗi từ server 
+
+## RESPONSE
+Thành phần response 
+![alt text](image-9.png)
+
+### Response: Status code
+- Nhóm 1XX - Infomation
+- Nhóm 2XX - Success
+- Nhóm 3XX - Redirection
+- Nhóm 4XX - CLient error
+- Nhóm 5XX - Server error
+
+### Respone: Header
+- Là phần thông tin metadata được server gửi kèm trong response trả về cho client.
+- Chứa các thông tin quan trọng về cách xử lý response, bảo mật, caching và nhiều thông số kỹ
+thuật khác.
+- Response headers được định dạng dưới dạng cặp key-value
+
+    Ví dụ: Content-Type:
+application/json.
+
+**Tác dụng: đóng vai trò quan trọng trong việc giao tiếp giữa client với server**
+- Cung cấp thông tin về nội dung response (kiểu dữ liệu, encoding, độ dài...)
+- Kiểm soát caching để tối ưu hiệu năng
+- Thiết lập các chính sách bảo mật
+- Quản lý phiên làm việc và cookie
+- Hướng dẫn browser cách xử lý dữ liệu nhận được
+- Hỗ trợ cross-origin resource sharing (CORS)
+
+### Respone: Body 
+Response Body là phần nội dung chính của phản hồi (response) từ server khi client gửi một request. Đây là nơi chứa dữ liệu thực tế mà server trả về, có thể ở nhiều định dạng khác nhau như JSON, XML, HTML, văn bản thuần túy, hoặc dữ liệu nhị phân.
+
+**Tác dụng:**
+- Chứa thông tin chính mà client yêu cầu từ server
+- Truyền tải dữ liệu giữa client và server một cách có cấu trúc
+- Cho phép ứng dụng client xử lý và hiển thị thông tin cho người dùng
+- Hỗ trợ việc giao tiếp bất đồng bộ giữa các hệ thống
+- Cung cấp thông tin về trạng thái xử lý của request
+
+**Test respone body thì test những gì:**
+- Kiểm tra cấu trúc
+- Kiểm tra nội dung
+- Kiểm tra xử lí lỗi
+- Kiểm tra hiệu năng
+
+## Authentication & authorization
+
+**Định nghĩa:**
+- Authentication (xác thực) là quá trình xác minh danh tính của người dùng hoặc hệ thống.
+- Authorization (phân quyền) là quá trình xác
+định quyền truy cập của người dùng sau khi xác minh danh tính.
+
+Mục đích sử dụng Authentication và Authorization để bảo vệ tài nguyên hệ thống, đảm bảo chỉ người dùng hợp lệ mới truy cập được dữ liệu hoặc chức năng phù
+hợp với vai trò của họ.
+
+## TERM
+- Username, password: một cặp dùng để xác thực
+người dùng.
+- Session, cookie: Session-Cookie là một phương pháp
+xác thực dựa trên trạng thái (stateful  uthentication), trong đó server duy trì trạng thái
+đăng nhập của người dùng bằng session, còn client lưu session ID dưới dạng cookie
+
+    - Session: lưu ở trên server
+    - Cookie: lưu ở dưới máy tính của client
+- Base64 encode/ decode: là việc biến đổi một chuỗi
+gốc thành một chuỗi mã hoá theo thuật toán mã hóa Base64
+- Token (hay Access Token): là một chuỗi ký tự ngẫu
+nhiên dùng để xác thực người dùng hoặc ứng dụng.
+    - Được tạo ra sau khi người dùng đăng nhập thành công
+    - Thường có thời gian sử dụng ngắn hạn
+    - Có thể chứa thông tin về user, quyền hạn, thời gian hết hạn
+    - Các dạng token phổ biến:
+        - Session Token (dùng trong session-cookie authentication).
+        - Bearer Token (thường dùng trong OAuth 2.0).
+        - JWT (JSON Web Token): Bearer token theo format **header.body.signature**
+    - Cách dùng: đính kèm trong header hoặc query parameter
+- Refresh Token là một loại token dùng để cấp mới
+Access Token khi Access Token hết hạn, giúp người
+dùng không phải đăng nhập lại.
+- API Key là một chuỗi ký tự duy nhất được cấp cho ứng dụng hoặc người dùng để truy cập API:
+    - API Key thường không thay đổi, chỉ xem được một lần saukhi tạo xong
+    - Không chứa thông tin người dùng mà chỉ xác định ứng dụng nào đang gọi API.
+    - Sử dụng tương tự token
+    
+    Cách dùng: đính kèm trong header hoặc query parameter
+
+**Đính kèm trong Header**
+
+- Authorization: Bearer <token/API key>
+
+
+**Đính kèm trong query**
+
+- https://bba.com?access_token=xyz
+- https://bba.com?api_key=zzz
+- https://bba.com?token=aaa&refresh_token=bbb
+
+## Authentication methods
+### Session -  Cookie Auth
+1.  Người dùng đăng nhập
+2.  Server xử lý và tạo Session, gửi cookie về cho client
+3.  Trình duyệt gửi request kèm cookie trong các API cần xác thực
+4. Server kiểm tra Session và xác thực người dùng
+5. Đăng xuất (Logout): server xoá session và gửi response về client: báo client xoá cookie liên quan đi.
+
+### Basic Auth
+Basic Authentication (Basic Auth): phương thức xác thực đơn giản của HTTP, trong đó thông tin đăng nhập
+(username và password) được mã hóa bằng Base64 và gửi trong mỗi request.
+
+    **base64(username:password)**
+
+1. Client gửi request không có thông tin xác thực
+2. Server phản hồi yêu cầu xác thực (401 Unauthorized)
+3. Client gửi lại request với thông tin xác thực trong header
+4. Server kiểm tra thông tin đăng nhập
+
+**Cách dùng Basic Auth:**
+
+Sử dụng header:
+    
+    Authorization: Basic <base64-encoded-token>
+
+### API Key
